@@ -1,3 +1,6 @@
+# MIT License
+# Copyright (c) [2025] [Chase Lewis]
+
 import psutil
 import time
 import requests

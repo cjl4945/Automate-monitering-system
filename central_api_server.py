@@ -1,3 +1,7 @@
+# MIT License
+# Copyright (c) [2025] [Chase Lewis]
+
+
 from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime

@@ -1,3 +1,6 @@
+# MIT License
+# Copyright (c) [2025] [Chase Lewis]
+
 from flask import Flask, render_template, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime, timedelta
