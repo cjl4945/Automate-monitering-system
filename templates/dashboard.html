@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Infrastructure Dashboard</title>
+    <!-- Include Chart.js from CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h1>Infrastructure Dashboard</h1>
+    <canvas id="metricsChart" width="800" height="400"></canvas>
+    
+    <script>
+        // Fetch data from the API endpoint
+        async function fetchData() {
+            const response = await fetch('/api/data');
+            return response.json();
+        }
+
+        async function renderChart() {
+            const data = await fetchData();
+            const labels = data.map(item => item.timestamp);
+            const cpuData = data.map(item => item.cpu_percent);
+            const memoryData = data.map(item => item.memory_percent);
+            const diskData = data.map(item => item.disk_usage_percent);
+
+            const ctx = document.getElementById('metricsChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [
+                        {
+                            label: 'CPU Usage (%)',
+                            data: cpuData,
+                            borderColor: 'rgba(255, 99, 132, 1)',
+                            fill: false,
+                        },
+                        {
+                            label: 'Memory Usage (%)',
+                            data: memoryData,
+                            borderColor: 'rgba(54, 162, 235, 1)',
+                            fill: false,
+                        },
+                        {
+                            label: 'Disk Usage (%)',
+                            data: diskData,
+                            borderColor: 'rgba(75, 192, 192, 1)',
+                            fill: false,
+                        }
+                    ]
+                },
+                options: {
+                    scales: {
+                        x: {
+                            type: 'time',
+                            time: {
+                                parser: 'YYYY-MM-DD HH:mm:ss',
+                                tooltipFormat: 'll HH:mm',
+                                displayFormats: {
+                                    hour: 'MMM D, hA'
+                                }
+                            },
+                            title: {
+                                display: true,
+                                text: 'Time'
+                            }
+                        },
+                        y: {
+                            beginAtZero: true,
+                            max: 100,
+                            title: {
+                                display: true,
+                                text: 'Percentage'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        renderChart();
+    </script>
+</body>
+</html>
