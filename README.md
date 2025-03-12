@@ -2,7 +2,7 @@
 
 🚀 **Real-Time Infrastructure Monitoring & Alerting**
 
-[![License:MIT](https://img.shields.io/github/license/cjl4945/Automate-monitering-system?color=blue)](LICENSE)
+[![License:MIT](https://img.shields.io/github/license/cjl4945/Automate-monitering-system?color=blue)](https://opensource.org/licenses/MIT)
 [![Issues](https://img.shields.io/github/issues/cjl4945/Automate-monitering-system)](https://github.com/cjl4945/Automate-monitering-system/issues)
 [![Last Commit](https://img.shields.io/github/last-commit/cjl4945/Automate-monitering-system)](https://github.com/cjl4945/Automate-monitering-system/commits/main)
 
